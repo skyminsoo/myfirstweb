@@ -20,6 +20,7 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121212;--card:#1b1b1b;--ink:#eeeeec;--sub:#b5b5b1;--faint:#85857f;--line:#323230;--soft:#262625;--rev:#121212;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#121212;--card:#1b1b1b;--ink:#eeeeec;--sub:#b5b5b1;--faint:#85857f;--line:#323230;--soft:#262625;--rev:#121212;color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{background:var(--bg);color:var(--ink)}
 body{font-family:var(--f-body);font-size:15px;line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
 .wrap{max-width:960px;margin:0 auto;display:grid;gap:22px}
@@ -328,7 +329,7 @@ app.addEventListener('input', e=>{
 app.addEventListener('keydown', e=>{ const c=e.target.closest('[data-open]'); if(c&&(e.key==='Enter'||e.key===' ')&&e.target===c){ e.preventDefault(); c.click(); } });
 document.getElementById('noteBtn').addEventListener('click',()=> go(V.view==='notes'?'list':'notes'));
 
-document.getElementById('gateOk').addEventListener('click',()=>{ document.getElementById('gate').hidden=true; document.querySelector('.wrap').removeAttribute('inert'); });
+document.getElementById('gateOk').addEventListener('click',()=>{ document.getElementById('gate').remove(); document.querySelector('.wrap').removeAttribute('inert'); });
 document.querySelector('.wrap').setAttribute('inert','');
 document.getElementById('gateOk').focus();
 render();
